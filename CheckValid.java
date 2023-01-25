@@ -22,10 +22,6 @@ class CheckValid {
                 stack.push(current);   
                 continue;   
             }     
-            if (stack.isEmpty()) { 
-                System.out.println("empty");   
-                return false;   
-            }     
             if (current == ')' || current == '}' || current == ']') { 
                 char popChar;
                 switch (current) {   
