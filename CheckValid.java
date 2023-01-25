@@ -16,12 +16,15 @@ class CheckValid {
         if(pos==charArray.length){
             return arithmeticCheck(input); 
         }
-        for (int i = 0; i < charArray.length; i++) {     
+        for (int i = pos; i < charArray.length; i++) {     
             char current = charArray[i];     
             if (current == '{' || current == '[' || current == '(') {     
                 stack.push(current);   
                 continue;   
-            }     
+            }
+            if (stack.isEmpty()) {   
+                return false;   
+            }
             if (current == ')' || current == '}' || current == ']') { 
                 char popChar;
                 switch (current) {   
