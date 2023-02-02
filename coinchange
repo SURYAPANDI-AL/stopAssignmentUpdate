@@ -1,0 +1,26 @@
+class Solution {
+    public int combination(int i,int[] coins, int amount,int max,List<Integer> l)
+    {
+        if(i>=coins.length||amount<=0)
+        {
+            if(amount==0&&l.size()<max)
+            {
+                return max=l.size();
+            }
+            return max;
+        }
+        l.add(coins[i]);
+        max=combination(i,coins,amount-coins[i],max,l);
+        l.remove(l.size()-1);
+        max=combination(i+1,coins,amount,max,l);
+        return max;
+    }
+    public int coinChange(int[] coins, int amount) {
+        int max=Integer.MAX_VALUE;
+        List<Integer> l=new LinkedList();
+        max=combination(0,coins,amount,max,l);
+        if(max==Integer.MAX_VALUE)
+            return -1;
+        return max;
+    }
+}
